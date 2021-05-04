@@ -10,3 +10,13 @@ A JavaScript Development Environment
 - Surge
   - Supports only static files
 - Vercel
+
+## Automation
+- Grunt
+  - The 'original'. Configuration over code. Large plugin ecosystem
+- Gulp
+  - In-memory streams. Fast. Code over configuration. Large plugin ecosystem
+- npm Scripts
+  - Declared in package.json. Leverage your OS' command line. Directly use npm packages. Call separate node scripts. Convention-based pre/post hooks
+  - 'pre' and 'post' hooks for scripts (ex: 'prestart')
+  - 'npm-run-all' run multiple concurrent tasks
