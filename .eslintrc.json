@@ -1,0 +1,23 @@
+// 20210504232657
+// https://gist.githubusercontent.com/coryhouse/61f866c7174220777899bcfff03dab7f/raw/4791ac24cbe8ffb2d75c4a6620052f8fca5216cb/.eslintrc.json
+
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-console": 1
+  }
+}
