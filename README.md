@@ -140,3 +140,112 @@ Enforce Consistency / Avoid Mistakes
 4. CircleCI
 5. Semaphore
 6. SnapCI
+
+## HTTP Calls
+
+### Approaches
+1. Node
+   - http
+   - request
+2. Browser
+   - XMLHttpRequest
+   - jQuery ($.ajax)
+   - Framework-based (ex: angular)
+   - Fetch
+3. Node & Browser
+   - isomorphic-fetch
+   - xhr
+   - SuperAgent
+   - Axios (clean, promise-based api)
+
+! Centralize API Calls
+  - Configure all calls
+  - Handle preloader logic
+  - Handle errors
+  - Single seam for mocking
+
+### Mocking HTTP
+Motivations:
+   - Unit testing
+   - Instant response
+   - Keep working when services are down
+   - Rapid prototyping
+   - Avoid inte-team bottlenecks
+   - Work offline
+
+1. Nock
+2. Static JSON
+3. Create development webserver (api-mock, JSON server, JSON Schema faker, Fake a server ex. brosersynch or express)
+
+#### Mocking Libraries
+1. Declare schema 
+   - JSON Schema Faker (json-schema-faker.js.org)
+2. Generate Random Data 
+   - faker.js 
+   - chance.js 
+   - randexp.js
+3. Serve Data via API 
+   - JSON Server
+
+## Project Structure
+1. Tip 1 - JS Belongs in a .js File
+    - Test? Lint? Reuse? Transpile? Import explicit dependencies? -> You loose all of this
+3. Tip 2 - Consider Organizing by feature instead of by file type
+4. Tip 3 - Extract Logic to POJOs (pure logic, no framework-specific code)
+
+## Production Build
+- Minification
+- Sourcemaps
+- Dynamic HTML
+- Cache busting
+  - save bandwidth
+  - save HTTP Requests (up to one year we can tell the browser (with headers) not to download some files)
+  - force request for the latest version
+  1. Need to HASH bundle filename (if we rebuild the app and there is no changes to the bundle it will continue to have the same filename)
+  2. Generate HTML dynamically
+- Bundle splitting
+  - Speed the initial page load (download only what you need)
+  - Avoid re-downloading all libraries
+  - Save bandwith and higher performance experience
+- Error logging
+- Generate separate css file (webpack -> "mini-css-extract-plugin")
+  - one reason is in order to use cache busting techniques
+
+Why Manipulate HTML for Production?
+  - Reference bundles automatically
+  - Handle dynamic bundle names
+  - Inject production only resources
+  - Minify
+
+Referencing Bundled Assets in HTML
+  - Hard code
+  - Manipulate via Node
+  - html-webpack-plugin
+
+Error Logging:
+- Ex: TrackJS, Sentry, New Relic, Raygun
+- What to look for:
+  - Error metadata (browser, stack trace, previous actions, custom api for enhanced tracking)
+  - Notifications & integrations
+  - Analytics and filtering
+  - Pricing
+- WebPack plugin: HtmlWebpackPulgin -> EJS (Embedded JavaScript templating)
+  - Inject the TrackJS code in the prod build.
+
+## Production Deployment
+### Separate the UI and API
+- Simple, low-risk, UI only deploys
+- Separates concerns (separate teams, less to understand, scale back-end separately)
+- Cheap UI hosting
+- Serve UI via a content delivery network
+- Use the API tech you like
+
+### Cloud Hosting
+- AWS
+- Microsoft Azure
+- Heroku
+- Firebase
+- Google Cloud Platform
+- Netlify (static files only)
+- Github pages (static files only)
+- Serge (static files only)
