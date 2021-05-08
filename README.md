@@ -249,3 +249,22 @@ Error Logging:
 - Netlify (static files only)
 - Github pages (static files only)
 - Serge (static files only)
+
+### Automated UI Deployment
+| npm start  -> npm run build   -> npm run deploy    |
+| development | production build | production deploy | 
+
+Surge: // soggy-secretary.surge.sh
+
+
+## Start kits, Update Approaches
+1. Yeoman (there are multiple templates that can be used as inspiration)
+  - Commit -> Scaffold over the existing project (Yeoman will ask what to do for each file) -> Resolve conflicts manually
+2. Github
+  - Host on Github -> Fork starger kit for new project -> Pull changes from master
+3. npm
+  - Encapsulate kit in npm package -> Update npm package to receive latest
+
+## Inspiration
+- javascriptstuff.com/react-starter-projects/ (ex: react-slingshot)
+- github.com/gianarb/awesome-angularjs
